@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter/material.dart';
 import 'package:flutter_woo_commerce_getx_learn/common/index.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -18,6 +19,7 @@ class ConfigService extends GetxService {
     super.onInit();
     getPlatform();
     initLocale();
+    initTheme();
   }
 
   Future<void> getPlatform() async {
@@ -40,5 +42,30 @@ class ConfigService extends GetxService {
     locale = value;
     Get.updateLocale(value);
     Storage().setString(Constants.storageLanguageCode, value.languageCode);
+  }
+
+  /// 主题相关
+  final RxBool _isDarkModel = Get.isDarkMode.obs;
+  bool get isDarkModel => _isDarkModel.value;
+
+  // 切换 theme
+  Future<void> switchThemeModel() async {
+    _isDarkModel.value = !_isDarkModel.value;
+    Get.changeThemeMode(
+      _isDarkModel.value == true ? ThemeMode.dark : ThemeMode.light,
+    );
+    await Storage().setString(Constants.storageThemeCode,
+        _isDarkModel.value == true ? "dark" : "light");
+
+    // 重新载入视图，因为
+    // 1 有自定义颜色
+    // 2 有些视图被缓存
+    // Get.offAllNamed(RouteNames.stylesStylesIndex);
+  }
+
+  // 初始 theme
+  void initTheme() {
+    var themeCode = Storage().getString(Constants.storageThemeCode);
+    _isDarkModel.value = themeCode == "dark" ? true : false;
   }
 }

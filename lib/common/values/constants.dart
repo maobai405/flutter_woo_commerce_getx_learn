@@ -5,4 +5,7 @@ class Constants {
 
   // 本地存储key
   static const storageLanguageCode = 'language_code';
+
+  // 主题样式
+  static const storageThemeCode = 'theme_code';
 }
