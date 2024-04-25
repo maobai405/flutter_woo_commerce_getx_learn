@@ -7,8 +7,9 @@ class Global {
   static Future<void> init() async {
     WidgetsFlutterBinding.ensureInitialized();
 
-    await Future.wait([
-      Get.putAsync<ConfigService>(() async => await ConfigService().init()),
-    ]).whenComplete(() {});
+    // 工具类-存储初始化
+    await Storage().init();
+
+    Get.put<ConfigService>(ConfigService());
   }
 }
