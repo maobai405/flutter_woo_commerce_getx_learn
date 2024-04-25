@@ -34,7 +34,6 @@ class StylesIndexPage extends GetView<StylesIndexController> {
           appBar: AppBar(
               title: Text(
             LocaleKeys.stylesTitle.tr,
-            style: const TextStyle(fontSize: 12),
           )),
           body: SafeArea(
             child: _buildView(),

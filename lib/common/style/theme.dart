@@ -369,6 +369,7 @@ class MaterialTheme {
         ),
         scaffoldBackgroundColor: colorScheme.background,
         canvasColor: colorScheme.surface,
+        fontFamily: "Montserrat",
       );
 
   List<ExtendedColor> get extendedColors => [];
