@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'routers/pages.dart';
+import 'common/index.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,8 +23,9 @@ class MyApp extends StatelessWidget {
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
 
       // 路由
-      initialRoute: "/",
+      initialRoute: RouteNames.systemSplash,
       getPages: RoutePages.list,
+      navigatorObservers: [RoutePages.observer],
     );
   }
 }
