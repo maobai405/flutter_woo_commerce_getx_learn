@@ -1,0 +1,3 @@
+dartdoc:
+  # 排除文件
+  nodoc: ["lib/pages/**/*.dart"]
