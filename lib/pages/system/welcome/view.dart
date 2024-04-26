@@ -16,8 +16,54 @@ class WelcomePage extends GetView<WelcomeController> {
           ? const SizedBox()
           : WelcomeSliderWidget(
               controller.items!,
-              onPageChanged: (index) {},
+              carouselController: controller.carouselController,
+              onPageChanged: (index) {
+                controller.onPageChanged(index);
+              },
             ),
+    );
+  }
+
+  // 控制栏
+  Widget _buildBar() {
+    return GetBuilder<WelcomeController>(
+      id: "bar",
+      init: controller,
+      builder: (controller) {
+        return controller.isShowStart
+            ?
+            // 开始按钮
+            ButtonWidget.primary(
+                LocaleKeys.welcomeStart.tr,
+                onTap: controller.onToMain,
+              ).tight(
+                width: double.infinity,
+                height: 50,
+              )
+            : <Widget>[
+                // Skip 跳过
+                ButtonWidget.text(
+                  LocaleKeys.welcomeSkip.tr,
+                  onTap: controller.onToMain,
+                  textColor: Colors.black,
+                ),
+
+                // 指示标
+                SliderIndicatorWidget(
+                  length: 3,
+                  currentIndex: controller.currentIndex,
+                ),
+
+                // 下一页
+                ButtonWidget.text(
+                  LocaleKeys.welcomeNext.tr,
+                  onTap: controller.onNext,
+                  textColor: Colors.black,
+                ),
+              ].toRow(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              );
+      },
     );
   }
 
@@ -27,6 +73,7 @@ class WelcomePage extends GetView<WelcomeController> {
       // slider切换
       _buildSlider(),
       // 控制栏
+      _buildBar(),
     ]
         .toColumn(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -41,7 +88,6 @@ class WelcomePage extends GetView<WelcomeController> {
       id: "welcome",
       builder: (_) {
         return Scaffold(
-          appBar: AppBar(title: const Text("welcome")),
           body: SafeArea(
             child: _buildView(),
           ),
