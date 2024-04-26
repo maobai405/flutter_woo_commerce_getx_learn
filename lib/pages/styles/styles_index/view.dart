@@ -20,6 +20,10 @@ class StylesIndexPage extends GetView<StylesIndexController> {
         onTap: controller.onThemeSelected,
         title: Text("主题 : ${ConfigService.to.isDarkModel ? "Dark" : "Light"}"),
       ),
+      ListTile(
+        onTap: () => Get.toNamed(RouteNames.stylesText),
+        title: const Text("Text 文本测试"),
+      ),
     ]);
   }
 
