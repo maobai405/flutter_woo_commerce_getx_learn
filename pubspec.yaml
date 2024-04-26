@@ -46,6 +46,7 @@ dependencies:
   extended_image: ^8.2.0
   flutter_screenutil: ^5.9.0
   flutter_native_splash: ^2.2.16
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +59,10 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_launcher_icons_maker: ^0.10.2
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: "assets/icons/logo.png"
 
 # app 图标
 flutter_icons:
