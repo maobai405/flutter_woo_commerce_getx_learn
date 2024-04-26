@@ -20,6 +20,7 @@ class StylesIndexPage extends GetView<StylesIndexController> {
         onTap: controller.onThemeSelected,
         title: Text("主题 : ${ConfigService.to.isDarkModel ? "Dark" : "Light"}"),
       ),
+      // Text 文本测试
       ListTile(
         onTap: () => Get.toNamed(RouteNames.stylesText),
         title: const Text("Text 文本测试"),
@@ -28,6 +29,11 @@ class StylesIndexPage extends GetView<StylesIndexController> {
       ListTile(
         onTap: () => Get.toNamed(RouteNames.stylesIcon),
         title: const TextWidget.body1("Icon 图标"),
+      ),
+      // Image 图片
+      ListTile(
+        onTap: () => Get.toNamed(RouteNames.stylesImage),
+        title: const TextWidget.body1("Image 图片"),
       ),
     ]);
   }
