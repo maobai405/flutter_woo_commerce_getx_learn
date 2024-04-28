@@ -14,14 +14,7 @@ class ConfigService extends GetxService {
   PackageInfo? _platform;
   String get version => _platform?.version ?? '-';
 
-  @override
-  void onInit() {
-    super.onInit();
-    getPlatform();
-    initLocale();
-    initTheme();
-  }
-
+  // 获取系统版本
   Future<void> getPlatform() async {
     _platform = await PackageInfo.fromPlatform();
   }
@@ -60,12 +53,28 @@ class ConfigService extends GetxService {
     // 重新载入视图，因为
     // 1 有自定义颜色
     // 2 有些视图被缓存
-    // Get.offAllNamed(RouteNames.stylesStylesIndex);
+    Get.offAllNamed(RouteNames.stylesStylesIndex);
   }
 
   // 初始 theme
   void initTheme() {
     var themeCode = Storage().getString(Constants.storageThemeCode);
     _isDarkModel.value = themeCode == "dark" ? true : false;
+  }
+
+  // 是否首次打开
+  bool get isAlreadyOpen => Storage().getBool(Constants.storageAlreadyOpen);
+
+  // 标记已打开app
+  void setAlreadyOpen() {
+    Storage().setBool(Constants.storageAlreadyOpen, true);
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    getPlatform();
+    initLocale();
+    initTheme();
   }
 }
