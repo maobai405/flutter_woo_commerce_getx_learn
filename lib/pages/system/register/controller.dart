@@ -4,23 +4,30 @@ import 'package:get/get.dart';
 class RegisterController extends GetxController {
   RegisterController();
 
+  // 通过 GlobalKey 的方式管理 Form 表单子项的验证功能
+  GlobalKey formKey = GlobalKey<FormState>();
+
   // 用户名
   TextEditingController userNameController =
-      TextEditingController(text: "ducafecat5");
+      TextEditingController(text: "maobai");
   // 邮件
   TextEditingController emailController =
-      TextEditingController(text: "ducafecat5@gmail.com");
+      TextEditingController(text: "maobai@gmail.com");
   // 姓
   TextEditingController firstNameController =
-      TextEditingController(text: "ducafe");
+      TextEditingController(text: "mao");
   // 名
-  TextEditingController lastNameController = TextEditingController(text: "cat");
+  TextEditingController lastNameController = TextEditingController(text: "bai");
   // 密码
   TextEditingController passwordController =
-      TextEditingController(text: "12345678");
+      TextEditingController(text: "@Baimao405??");
 
   // 注册
-  void onSignUp() {}
+  void onSignUp() {
+    if ((formKey.currentState as FormState).validate()) {
+      // 验证通过提交数据
+    }
+  }
 
   // 登录
   void onSignIn() {}
