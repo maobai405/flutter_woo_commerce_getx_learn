@@ -14,5 +14,8 @@ class Global {
 
     Get.put<ConfigService>(ConfigService());
     Get.put<WPHttpService>(WPHttpService());
+
+    // 调用easyloading
+    Loading();
   }
 }

@@ -52,7 +52,7 @@ class RegisterPinPage extends GetView<RegisterPinController> {
           onTap: controller.onBtnBackup,
         ),
       ].toColumn(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
       ),
     ).paddingAll(AppSpace.card);
   }
